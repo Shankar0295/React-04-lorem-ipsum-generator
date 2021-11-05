@@ -1,0 +1,50 @@
+.container{
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+.input-box{
+    width: 6%;
+    padding: 4px 5px;
+    font-weight: 500;
+}
+.generate-btn{
+     margin-left: 10px;
+    background-color: green;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+article{
+    text-align: justify;
+}
+
+.lorem-text{
+    font-size: 20px;
+}
+
+.clear-btn{
+    margin-right: 10px;
+    background-color: #e64949;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.clipboard-btn{
+    margin-right: 10px;
+    background-color: #e4e400;
+    color: #000000;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}

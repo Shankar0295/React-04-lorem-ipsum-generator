@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './Home.css'
 
 const Home = () => {
     let textCount;
@@ -62,21 +63,21 @@ const Home = () => {
     }
 
     return (
-        <div>
+        <div className="container">
             <h1>Get a Lorem Text Instantly</h1>
             <form className="lorem-ipsum" onSubmit={generate}>
-                <label htmlFor="lorem">Paragraphs:</label>
-                <input name="lorem" type="text" value={count} onChange={(e) => setCount(e.target.value)} maxLength="2"></input>
-                <button type="submit">Generate</button>
+                <label htmlFor="lorem">Paragraphs Needed : </label>
+                <input className="input-box" name="lorem" type="text" value={count} onChange={(e) => setCount(e.target.value)} maxLength="2"></input>
+                <button className="generate-btn" type="submit">Generate</button>
             </form>
             {render && !clear ?
                 <article id="copy">
                     {paragraph.slice(0, textCount).map((item) => {
-                        return <p key={item.id}>{item.text}</p>
+                        return <p className="lorem-text" key={item.id}>{item.text}</p>
                     })}
                 </article> : <h3>Please enter numbers between 1 to 20</h3>}
-            <button type="button" onClick={clearData}>Clear</button>
-            <button onClick={copy}>Copy To Clipboard</button>
+            <button type="button" className="clear-btn" onClick={clearData}>Clear</button>
+            <button onClick={copy} className="clipboard-btn">Copy To Clipboard</button>
         </div>
     );
 }
