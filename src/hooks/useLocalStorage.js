@@ -1,0 +1,26 @@
+import { useState, useEffect } from 'react';
+
+function getLocalStorageValue(key, defaultValue) {
+    //getting stored value form Local storage
+    const savedValue = localStorage.getItem(key);
+    const initialValue = JSON.parse(savedValue);
+    console.log(defaultValue, "default")
+    console.log(initialValue, "initail")
+    return initialValue || defaultValue
+}
+
+const useLocalStorage = (key, defaultValue) => {
+    const [value, setValue] = useState(() => {
+        return getLocalStorageValue(key, defaultValue)
+    })
+
+
+    useEffect(() => {
+        //storing text every change/render
+        localStorage.setItem(key, JSON.stringify(value))
+    }, [key, value]);
+
+    return [value, setValue]
+};
+
+export default useLocalStorage;
