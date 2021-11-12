@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import JsonData from '../../data.json'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import './Home.css'
@@ -6,27 +6,21 @@ import './Home.css'
 const Home = () => {
     const [paragraph, setParagraph] = useLocalStorage("text", [])
     const [count, setCount] = useLocalStorage("count", "");
-    const [render, setRender] = useState(true);
-    const [clear, setClear] = useState(false);
 
     const generate = (e) => {
         e.preventDefault();
         let textCount = parseInt(count);
         console.log(textCount, "count")
         if (count > 0 && count <= 20) {
-            setRender(true)
-            setClear(false)
             setParagraph(JsonData.slice(0, count))
             console.log(paragraph)
         } else {
             console.log("hello")
-            setRender(false)
         }
     }
 
     const clearData = (e) => {
         e.preventDefault();
-        setClear(true)
         setCount(0);
         setParagraph([]);
 
@@ -64,12 +58,11 @@ const Home = () => {
                 <label htmlFor="lorem">Paragraphs Needed : </label>
                 <input className="input-box" name="lorem" type="number" id="num" value={count} onChange={(e) => setCount(e.target.value)} min="1" max="20"></input>
                 <button className="generate-btn" type="submit">Generate</button>
-                {render && !clear ?
-                    <article id="copy">
-                        {paragraph.map((item, idx) => {
-                            return <p className="lorem-text" key={idx}>{item}</p>
-                        })}
-                    </article> : <h3>Please enter numbers between 1 to 20</h3>}
+                {<article id="copy">
+                    {paragraph.map((item, idx) => {
+                        return <p className="lorem-text" key={idx}>{item}</p>
+                    })}
+                </article>}
             </form>
             <button type="button" className="clear-btn" onClick={clearData}>Clear</button>
             <button onClick={copy} className="clipboard-btn">Copy To Clipboard</button>
